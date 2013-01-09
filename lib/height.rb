@@ -23,8 +23,6 @@ class Height
   MILLIMETERS_IN_INCH = 25.4
   INCHES_IN_FOOT = 12
 
-  attr_reader :centimeters
-
   class << self
     attr_accessor :system_of_units
   end
@@ -32,23 +30,31 @@ class Height
   self.system_of_units = :metric
 
   def initialize(input)
-    @centimeters = Parser.new(input).centimeters
+    @millimeters = Parser.new(input).millimeters
+  end
+
+  def millimeters
+    @millimeters
+  end
+
+  def centimeters
+    millimeters.to_centimeters
   end
 
   def meters
-    centimeters.to_meters
+    millimeters.to_meters
   end
 
   def inches
-    centimeters.to_inches
+    millimeters.to_inches
   end
 
   def feet
-    centimeters.to_feet
+    millimeters.to_feet
   end
 
   def <=>(other)
-    centimeters <=> other.centimeters
+    millimeters <=> other.millimeters
   end
 
   def to_s(format = :default, system_of_units = nil)
@@ -56,9 +62,9 @@ class Height
 
     case system_of_units
     when :metric
-      Formatters::Metric.new(centimeters).format(format)
+      Formatters::Metric.new(millimeters).format(format)
     when :imperial
-      Formatters::Imperial.new(centimeters).format(format)
+      Formatters::Imperial.new(millimeters).format(format)
     else
       raise ::ArgumentError.new('Invalid system of units provided, use either :metric or :imperial')
     end
