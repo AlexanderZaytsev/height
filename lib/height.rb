@@ -65,8 +65,13 @@ class Height
   end
 
   def +(other)
-    total_millimeters = millimeters + other.millimeters
-    self.class.new(total_millimeters.to_centimeters)
+    centimeters = (millimeters + other.millimeters).to_centimeters
+    self.class.new(centimeters)
+  end
+
+  def -(other)
+    centimeters = (millimeters - other.millimeters).to_centimeters
+    self.class.new(centimeters)
   end
 
   def <=>(other)

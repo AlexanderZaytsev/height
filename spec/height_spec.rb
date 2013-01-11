@@ -14,15 +14,12 @@ describe Height do
     end
   end
 
-  describe '+' do
-    before do
-      @two_meters = Height.new(200)
-      @ten_centimeters = Height.new(10)
-    end
+  it '+' do
+    (Height.new(200) + Height.new(10)).should == Height.new(210)
+  end
 
-    it 'adds' do
-      (@two_meters + @ten_centimeters).should == Height.new(210)
-    end
+  it '-' do
+    (Height.new(200) - Height.new(10)).should == Height.new(190)
   end
 
   describe '#initialize' do

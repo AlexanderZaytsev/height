@@ -18,30 +18,31 @@ class Height
       end
 
       def <=>(other)
-        value <=> other.to(self.class).value
+        value <=> other_value(other)
       end
 
       def +(other)
-        result = value + other.to(self.class).value
+        result = value + other_value(other)
         self.class.new(result)
       end
 
       def -(other)
-        result = value - other.to(self.class).value
+        result = value - other_value(other)
+
         self.class.new(result)
       end
 
       def *(other)
-        result = value * other.to(self.class).value
+        result = value * other_value(other)
         self.class.new(result)
       end
 
       def /(other)
-        result = value / other.to(self.class).value
+        result = value / other_value(other)
         self.class.new(result)
       end
 
-      def to(klass)
+      def to_unit(klass)
         class_name = klass.name.split('::').last.downcase
         method = "to_#{class_name}"
         send(method)
@@ -50,6 +51,15 @@ class Height
       def to_s
         "%g" % ("%0.2f" % value)
       end
+
+      private
+        def other_value(other)
+          if other.respond_to? :to_unit
+            other.to_unit(self.class).value
+          else
+            other
+          end
+        end
 
     end
   end
