@@ -1,6 +1,6 @@
 # Height
 
-Convert height between metric and imperial systems. The main target of this gem are apps that have to dela with human's height.
+Convert height between metric and imperial systems. The main target of this gem are apps that have to deal with human's height.
 
 ## Installation
 
@@ -28,6 +28,9 @@ Or install it yourself as:
 
 @height.to_s(:default, :metric) # '1m 91cm'
 @height.to_s(:default, :imperial) # '6 ft 3 in'
+
+# or simply:
+@height.to_s # '1m 91cm'
 ```
 
 ### I18n & Formats
@@ -47,6 +50,7 @@ You can now call:
 
 ```ruby
 @height = Height.new(191)
+
 @height.to_s(:default) # '1m 91cm'
 @height.to_s(:only_meters) # '1.91m'
 @height.to_s(:only_centimeters) # '191cm'
@@ -61,7 +65,7 @@ Height.new(191).to_s(:default, :metric) # '1m 91cm'
 Height.new(191).to_s(:default, :imperial) # '6 ft 3 in'
 ```
 
-If you don't want to specify it every time you call `to_s`, you set it globally:
+If you don't want to specify it every time, you can set it globally:
 ```ruby
 Height.system_of_units = :imperial
 
