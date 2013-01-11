@@ -6,7 +6,7 @@ class Height
       attr_reader :value
 
       def initialize(value)
-        @value = self.class.format_value(value)
+        @value = self.class.round_value(value)
       end
 
       def <=>(other)

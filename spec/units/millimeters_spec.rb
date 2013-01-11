@@ -2,39 +2,40 @@ require 'spec_helper'
 
 describe Height::Units::Millimeters do
 
-  describe 'converting' do
+  describe 'converts to' do
     before do
       @millimeters = Height::Units::Millimeters.new(1910)
     end
 
-    it 'to millimeters' do
+    it 'millimeters' do
       @millimeters.to_millimeters.should === @millimeters
     end
 
-    it 'to centimeters' do
+    it 'centimeters' do
       @millimeters.to_centimeters.should == Height::Units::Centimeters.new(191)
     end
 
-    it 'to meters' do
+    it 'meters' do
       @millimeters.to_meters.should == Height::Units::Meters.new(1.91)
     end
 
-    it 'to inches' do
+    it 'inches' do
       @millimeters.to_inches.should == Height::Units::Inches.new(75)
     end
 
-    it 'to feet' do
+    it 'feet' do
       @millimeters.to_feet.should == Height::Units::Feet.new(6.25)
+    end
+
+    it 'to string' do
+      Height::Units::Millimeters.new(1.6).to_s.should == '2'
+      Height::Units::Millimeters.new(1.0).to_s.should == '1'
     end
   end
 
-  it 'can be created from string' do
-    Height::Units::Millimeters.new('191').should == Height::Units::Millimeters.new(191)
-  end
 
-  it 'to string' do
-    Height::Units::Millimeters.new(1.6).to_s.should == '2'
-    Height::Units::Millimeters.new(1.0).to_s.should == '1'
+  it 'rounds the value to 0 digit precision' do
+    Height::Units::Millimeters.new(1914.5).value.should == 1915
   end
 
 end

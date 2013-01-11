@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Height::Units::Base do
+
   describe '#to' do
     it 'converts unit into another unit' do
       @centimeters = Height::Units::Centimeters.new(41)
@@ -16,10 +17,16 @@ describe Height::Units::Base do
   end
 
   describe '+' do
-    it 'adds' do
+    before do
       @meters = Height::Units::Meters.new(1.5)
       @centimeters = Height::Units::Centimeters.new(41)
+    end
+
+    it 'adds' do
       (@meters + @centimeters).should == Height::Units::Meters.new(1.91)
+    end
+
+    it 'returns instnace of the class of the first unit' do
       (@meters + @centimeters).class.should == Height::Units::Meters
     end
   end

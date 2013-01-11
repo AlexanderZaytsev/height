@@ -34,8 +34,8 @@ class Height
       end
 
       private
-        def self.format_value(value)
-          value.to_f.round(2)
+        def self.round_value(value)
+          value.round(2)
         end
     end
   end
