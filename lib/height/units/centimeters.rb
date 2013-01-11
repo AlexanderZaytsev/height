@@ -23,10 +23,9 @@ class Height
         to_inches.to_feet
       end
 
-      private
-        def self.round_value(value)
-          value.round(1)
-        end
+      def to_s
+        value.round.to_s
+      end
     end
   end
 end

@@ -4,7 +4,7 @@ describe Height::Units::Millimeters do
 
   describe 'converts to' do
     before do
-      @millimeters = Height::Units::Millimeters.new(1910)
+      @millimeters = Height::Units::Millimeters.new(1905)
     end
 
     it 'millimeters' do
@@ -27,12 +27,11 @@ describe Height::Units::Millimeters do
       @millimeters.to_feet.should == Height::Units::Feet.new(6.25)
     end
 
-    it 'to string' do
+    it 'string' do
       Height::Units::Millimeters.new(1.6).to_s.should == '2'
       Height::Units::Millimeters.new(1.0).to_s.should == '1'
     end
   end
-
 
   it 'rounds the value to 0 digit precision' do
     Height::Units::Millimeters.new(1914.5).value.should == 1915

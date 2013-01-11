@@ -16,7 +16,7 @@ describe Height::Units::Meters do
     end
 
     it 'inches' do
-      @meters.to_inches.should == Height::Units::Inches.new(75)
+      @meters.to_inches.should == Height::Units::Inches.new(75.2)
     end
 
     it 'feet' do
@@ -37,8 +37,6 @@ describe Height::Units::Meters do
   it 'has centimeters' do
     Height::Units::Meters.new(1.91).centimeters.should == Height::Units::Centimeters.new(91)
   end
-
-
 
   it 'rounds the value to 2 digit precision' do
     Height::Units::Meters.new(1.914).value.should == 1.91

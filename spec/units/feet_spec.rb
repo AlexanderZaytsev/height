@@ -38,8 +38,6 @@ describe Height::Units::Feet do
     Height::Units::Feet.new(6.25).inches.should == Height::Units::Inches.new(3)
   end
 
-
-
   it 'rounds the value to 2 digit precision' do
     Height::Units::Feet.new(6.251).value.should == 6.25
   end

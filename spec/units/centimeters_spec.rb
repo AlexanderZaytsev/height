@@ -24,14 +24,12 @@ describe Height::Units::Centimeters do
     end
 
     it 'string' do
-      Height::Units::Centimeters.new(191.55).to_s.should == '191.6'
       Height::Units::Centimeters.new(191.0).to_s.should == '191'
     end
   end
 
-
   it 'rounds the value to 0 digit precision' do
-    Height::Units::Centimeters.new(191.51).value.should == 191.5
+    Height::Units::Centimeters.new(191.51).value.should == 192
   end
 
 end

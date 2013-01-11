@@ -32,11 +32,6 @@ class Height
         Inches.new(inches)
       end
 
-      private
-        def self.round_value(value)
-          value.round(2)
-        end
-
     end
   end
 end

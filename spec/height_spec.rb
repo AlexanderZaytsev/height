@@ -14,6 +14,25 @@ describe Height do
     end
   end
 
+  describe '+' do
+    before do
+      @two_meters = Height.new(200)
+      @ten_centimeters = Height.new(10)
+    end
+
+    it 'adds' do
+      (@two_meters + @ten_centimeters).should == Height.new(210)
+    end
+  end
+
+  describe '#initialize' do
+    it 'accepts Height::Units' do
+      centimeters = Height::Units::Centimeters.new(191)
+
+      Height.new(centimeters).centimeters.should == centimeters
+    end
+  end
+
   describe '#to_s' do
     it 'works without arguments' do
       Height.new(191).to_s.should == '1m 91cm'

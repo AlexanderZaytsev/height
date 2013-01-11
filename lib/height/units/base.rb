@@ -5,6 +5,14 @@ class Height
 
       attr_reader :value
 
+      def self.round_value(value)
+        key = self.name.split('::').last.downcase.to_sym
+
+        precision = ::Height.units_precision[key]
+
+        value.round(precision)
+      end
+
       def initialize(value)
         @value = self.class.round_value(value)
       end
@@ -42,6 +50,7 @@ class Height
       def to_s
         "%g" % ("%0.2f" % value)
       end
+
     end
   end
 end

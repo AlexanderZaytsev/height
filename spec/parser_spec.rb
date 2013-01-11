@@ -5,6 +5,6 @@ describe Height::Parser do
     it { Height::Parser.new(191).centimeters.should == Height::Units::Centimeters.new(191) }
     it { Height::Parser.new('1.91').centimeters.should == Height::Units::Centimeters.new(191) }
     it { Height::Parser.new('1m 91cm').centimeters.should == Height::Units::Centimeters.new(191) }
-    it { Height::Parser.new('6 feet 3 inches').centimeters.should == Height::Units::Centimeters.new(191) }
+    it { Height::Parser.new('6 feet 3 inches').centimeters.should == Height::Units::Centimeters.new(190.5) }
   end
 end

@@ -18,19 +18,30 @@ class Height
   include Comparable
 
   MILLIMETERS_IN_CENTIMETER = 10
-  MILLIMETERS_IN_METER = 1000
   CENTIMETERS_IN_METER = 100
+  MILLIMETERS_IN_METER = MILLIMETERS_IN_CENTIMETER * CENTIMETERS_IN_METER
   MILLIMETERS_IN_INCH = 25.4
   INCHES_IN_FOOT = 12
 
   class << self
-    attr_accessor :system_of_units
+    attr_accessor :system_of_units, :units_precision
   end
 
   self.system_of_units = :metric
+  self.units_precision = {
+    millimeters: 0,
+    centimeters: 0,
+    meters: 2,
+    inches: 0,
+    feet: 2,
+  }
 
   def initialize(input)
-    @millimeters = Parser.new(input).millimeters
+    if input.respond_to? :to_millimeters
+      @millimeters = input.to_millimeters
+    else
+      @millimeters = Parser.new(input).millimeters
+    end
   end
 
   def millimeters
@@ -51,6 +62,11 @@ class Height
 
   def feet
     millimeters.to_feet
+  end
+
+  def +(other)
+    total_millimeters = millimeters + other.millimeters
+    self.class.new(total_millimeters.to_centimeters)
   end
 
   def <=>(other)

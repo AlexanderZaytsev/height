@@ -33,10 +33,6 @@ class Height
         Millimeters.new(millimeters).to_centimeters
       end
 
-      private
-        def self.round_value(value)
-          value.round(2)
-        end
     end
   end
 end

@@ -29,8 +29,6 @@ describe Height::Units::Inches do
     end
   end
 
-
-
   it 'rounds the value to 0 digit precision' do
     Height::Units::Inches.new(72.4).value.should == 72
   end
