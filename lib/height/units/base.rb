@@ -2,7 +2,7 @@ class Height
   module Units
     class Base
       include Comparable
-
+      include Math
       attr_reader :value
 
       def self.round_value(value)

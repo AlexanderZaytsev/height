@@ -14,6 +14,21 @@ describe Height do
     end
   end
 
+  describe '.units_precision' do
+    before do
+      @previous_unit_precision = Height.units_precision.dup
+    end
+
+    it 'can be changed in Height class' do
+      Height.units_precision[:centimeters] = 2
+      Height.new(190.5).centimeters.should == 190.50
+    end
+
+    after do
+      Height.units_precision = @previous_unit_precision
+    end
+  end
+
   it '+' do
     (Height.new(200) + Height.new(10)).should == Height.new(210)
   end

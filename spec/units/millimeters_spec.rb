@@ -4,7 +4,7 @@ describe Height::Units::Millimeters do
 
   describe 'converts to' do
     before do
-      @millimeters = Height::Units::Millimeters.new(1905)
+      @millimeters = Height::Units::Millimeters.new(1910)
     end
 
     it 'millimeters' do

@@ -1,7 +1,6 @@
 class Height
   module Formatters
     class Metric < Base
-
       def format(format = :default)
         meters = @value.to_meters
 

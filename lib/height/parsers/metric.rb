@@ -33,9 +33,9 @@ class Height
       end
 
       private
-        # 1.91
+        # 191.5
         def self.parse_float(float)
-          (float * MILLIMETERS_IN_METER).to_i
+          (float * MILLIMETERS_IN_CENTIMETER).to_i
         end
 
         # 191
